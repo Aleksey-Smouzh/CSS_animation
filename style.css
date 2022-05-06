@@ -5,26 +5,31 @@
     font-family: 'Dancing Script', cursive;
 
 }
-body{
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: linear-gradient(45deg, #006bc6, #1ecafc);
 }
+
 .container {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.container h1{
+
+.container,
+h1 {
     position: absolute;
     color: aliceblue;
     font-size: 1.75em;
     font-weight: 200;
 }
-.loader{
+
+.loader {
     position: relative;
     width: 300px;
     height: 300px;
@@ -32,7 +37,50 @@ body{
     justify-content: center;
     align-items: center;
     background: rgba(0, 0, 0, 0.25);
+    filter: url(#Gooey);
 }
-.loader span{
-    
+
+.loader,
+span {
+    position: absolute;
+    left: 0px;
+    transform-origin: 150px;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50%;
+    animation: animate 5s ease-in-out infinite;
+    animation-delay: calc(0.15s * var(--i));
+}
+
+@keyframes animate {
+
+    0%,
+    10% {
+        width: 10px;
+        height: 10px;
+        transform: rotate(360deg) translateX(20px); 
+    }
+
+    40%,
+    70% {
+        width: 1px;
+        height: 20px;
+        transform: rotate(calc(360deg/ 8 * var(--i))) translateX(120px);
+        box-shadow: 0 0 0 10px rgb(227, 8, 8);
+    }
+    75%,
+    80% {
+        width: 1px;
+        height: 20px;
+        transform: rotate(calc(360deg/ 8 * (--i))) translateX(120px);
+        box-shadow: 0 0 0 10px rgb(227, 8, 8);
+    }
+
+    90%,
+    100% {
+        width: 10px;
+        height: 10px;
+        transform: rotate(360deg) translateX(20px);
+    }
 }
